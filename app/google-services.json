@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "716605490129",
+    "project_id": "firebase-instapoints"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716605490129:android:a032db801614452a",
+        "android_client_info": {
+          "package_name": "com.test.instapoints"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716605490129-l5o89s7ipv9vk93c3kbjptcovchkfva9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.instapoints",
+            "certificate_hash": "0E6A6C03671130CF8DB37188C37E6969129518A1"
+          }
+        },
+        {
+          "client_id": "716605490129-081km40n1abbekgta1mrbnotgn4k14j7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM5KBuEEETH5kEAJAUMQMH_cy6q50VpL0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
