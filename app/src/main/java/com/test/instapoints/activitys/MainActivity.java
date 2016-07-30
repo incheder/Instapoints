@@ -24,9 +24,10 @@ import android.widget.TextView;
 
 import com.test.instapoints.R;
 import com.test.instapoints.fragments.ProfileFragment;
+import com.test.instapoints.fragments.ShowQRCodeFragment;
 import com.test.instapoints.model.User;
 
-public class MainActivity extends AppCompatActivity implements ProfileFragment.OnProfileFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements ProfileFragment.OnProfileFragmentInteractionListener,ShowQRCodeFragment.OnShowQRFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -111,6 +112,11 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
 
     }
 
+    @Override
+    public void onShowQRFragmentInteraction(Uri uri) {
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -163,6 +169,8 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
             switch (position){
                 case 0:
                     return ProfileFragment.newInstance(user.getName(),user.getEmail(),user.getAvatarUrl());
+                case 1:
+                    return ShowQRCodeFragment.newInstance("","");
                 default:
                     return PlaceholderFragment.newInstance(position + 1);
             }
@@ -181,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
                 case 0:
                     return "PERFIL";
                 case 1:
-                    return "SECTION 2";
+                    return "QR";
                 case 2:
                     return "SECTION 3";
                 case 3:
