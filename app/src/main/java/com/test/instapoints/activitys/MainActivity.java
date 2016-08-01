@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -23,11 +26,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.test.instapoints.R;
+import com.test.instapoints.fragments.HistoryFragment;
 import com.test.instapoints.fragments.ProfileFragment;
 import com.test.instapoints.fragments.ShowQRCodeFragment;
 import com.test.instapoints.model.User;
 
-public class MainActivity extends AppCompatActivity implements ProfileFragment.OnProfileFragmentInteractionListener,ShowQRCodeFragment.OnShowQRFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements ProfileFragment.OnProfileFragmentInteractionListener,
+        ShowQRCodeFragment.OnShowQRFragmentInteractionListener,
+        HistoryFragment.OnHistoryFragmentInteractionListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -45,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
     private ViewPager mViewPager;
 
     private User user;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +71,27 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        //navigationView.setNavigationItemSelectedListener( navigationItemSelectedListener );
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.openDrawer, R.string.closeDrawer){
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
+
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        actionBarDrawerToggle.syncState();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +143,11 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
 
     @Override
     public void onShowQRFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onHistoryFragmentInteraction(Uri uri) {
 
     }
 
@@ -171,6 +205,8 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
                     return ProfileFragment.newInstance(user.getName(),user.getEmail(),user.getAvatarUrl());
                 case 1:
                     return ShowQRCodeFragment.newInstance("","");
+                case 2:
+                    return HistoryFragment.newInstance("","");
                 default:
                     return PlaceholderFragment.newInstance(position + 1);
             }
@@ -191,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
                 case 1:
                     return "QR";
                 case 2:
-                    return "SECTION 3";
+                    return "HISTORIAL";
                 case 3:
                     return "SECTION 4";
                 case 4:

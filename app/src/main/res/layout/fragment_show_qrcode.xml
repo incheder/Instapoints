@@ -10,18 +10,19 @@
             android:layout_height="wrap_content"
             android:text="dsadsadsadsad"
             android:textStyle="bold"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:visibility="gone"/>
 
-        <!--
+
         <ImageView
             android:layout_gravity="center"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/imageViewQR"
             android:src="@drawable/qr_example"
             android:scaleType="center"
             />
-        -->
+
 
 
 </FrameLayout>

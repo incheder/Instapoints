@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,7 +98,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         ButterKnife.bind(this,view);
         textViewUserName.setText(mParamName);
         textViewUserEmail.setText(mParamEmail);
-        Picasso.with(getActivity()).load(mParamAvatarUri).into(mTarget);
+        if(mParamAvatarUri != null && !TextUtils.isEmpty(mParamAvatarUri)) {
+            Picasso.with(getActivity()).load(mParamAvatarUri).into(mTarget);
+        }
         buttonSignOut.setOnClickListener(this);
         return view;
     }
