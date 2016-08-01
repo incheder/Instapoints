@@ -4,12 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import com.test.instapoints.R;
-import com.test.instapoints.model.Payment;
+import com.test.instapoints.models.Payment;
 
 import java.util.ArrayList;
 

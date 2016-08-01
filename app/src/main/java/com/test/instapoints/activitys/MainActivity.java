@@ -26,14 +26,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.test.instapoints.R;
+import com.test.instapoints.fragments.CouponFragment;
 import com.test.instapoints.fragments.HistoryFragment;
 import com.test.instapoints.fragments.ProfileFragment;
 import com.test.instapoints.fragments.ShowQRCodeFragment;
-import com.test.instapoints.model.User;
+import com.test.instapoints.fragments.StoresFragment;
+import com.test.instapoints.models.User;
 
 public class MainActivity extends AppCompatActivity implements ProfileFragment.OnProfileFragmentInteractionListener,
         ShowQRCodeFragment.OnShowQRFragmentInteractionListener,
-        HistoryFragment.OnHistoryFragmentInteractionListener{
+        HistoryFragment.OnHistoryFragmentInteractionListener,
+        CouponFragment.OnCouponFragmentInteractionListener,
+        StoresFragment.OnStoresFragmentInteractionListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -151,6 +155,16 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
 
     }
 
+    @Override
+    public void onCouponFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onStoresFragmentInteraction(Uri uri) {
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -207,6 +221,10 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
                     return ShowQRCodeFragment.newInstance("","");
                 case 2:
                     return HistoryFragment.newInstance("","");
+                case 3:
+                    return CouponFragment.newInstance("","");
+                case 4:
+                    return StoresFragment.newInstance("","");
                 default:
                     return PlaceholderFragment.newInstance(position + 1);
             }
@@ -223,15 +241,15 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.O
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "PERFIL";
+                    return "Perfil";
                 case 1:
                     return "QR";
                 case 2:
-                    return "HISTORIAL";
+                    return "Historial";
                 case 3:
-                    return "SECTION 4";
+                    return "Cuponera";
                 case 4:
-                    return "SECTION 5";
+                    return "Tiendas";
 
             }
             return null;

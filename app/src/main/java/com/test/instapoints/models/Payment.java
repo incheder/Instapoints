@@ -1,4 +1,4 @@
-package com.test.instapoints.model;
+package com.test.instapoints.models;
 
 /**
  * Created by eder on 7/31/16.

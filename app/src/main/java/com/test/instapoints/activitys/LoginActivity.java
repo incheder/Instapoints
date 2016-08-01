@@ -41,7 +41,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.test.instapoints.R;
-import com.test.instapoints.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
