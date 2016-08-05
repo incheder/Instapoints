@@ -1,14 +1,22 @@
 package com.test.instapoints.fragments;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 import com.test.instapoints.R;
+
+import net.glxn.qrgen.android.QRCode;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +35,8 @@ public class ShowQRCodeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public final static int WIDTH=500;
 
     private OnShowQRFragmentInteractionListener mListener;
 
@@ -65,7 +75,12 @@ public class ShowQRCodeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_show_qrcode, container, false);
+        View view =  inflater.inflate(R.layout.fragment_show_qrcode, container, false);
+        ImageView imageView = (ImageView)view.findViewById(R.id.imageViewQR);
+
+        Bitmap myBitmap = QRCode.from("www.example.org").bitmap();
+        imageView.setImageBitmap(myBitmap);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -106,4 +121,28 @@ public class ShowQRCodeFragment extends Fragment {
         // TODO: Update argument type and name
         void onShowQRFragmentInteraction(Uri uri);
     }
+
+    // this is method call from on create and return bitmap image of QRCode.
+    /*private Bitmap encodeAsBitmap(String str) throws WriterException {
+        BitMatrix result;
+        try {
+            result = new MultiFormatWriter().encode(str,
+                    BarcodeFormat.QR_CODE, WIDTH, WIDTH, null);
+        } catch (IllegalArgumentException iae) {
+            // Unsupported format
+            return null;
+        }
+        int w = result.getWidth();
+        int h = result.getHeight();
+        int[] pixels = new int[w * h];
+        for (int y = 0; y < h; y++) {
+            int offset = y * w;
+            for (int x = 0; x < w; x++) {
+                pixels[offset + x] = result.get(x, y) ? getResources().getColor(R.color.black):getResources().getColor(R.color.white);
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        bitmap.setPixels(pixels, 0, 500, 0, 0, w, h);
+        return bitmap;
+    } /// end of this method*/
 }
